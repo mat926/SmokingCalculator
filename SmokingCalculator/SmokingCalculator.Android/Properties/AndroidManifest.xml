@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="10" android:versionName="1.0" package="com.smokingcalculator" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="30" />
+	<application android:label="Smoking Calculator" android:theme="@style/MainTheme">
+		<!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+		<meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-6196363473099538~2307563281" />
+	</application>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<queries>
+		<intent>
+			<action android:name="android.intent.action.SENDTO" />
+			<!--for the contact me button-->
+			<data android:scheme="mailto" />
+		</intent>
+	</queries>
+</manifest>

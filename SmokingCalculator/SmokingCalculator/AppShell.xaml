@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:SmokingCalculator.Views"
+       xmlns:helpers ="clr-namespace:SmokingCalculator.Helpers"
+       xmlns:admob="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
+       Title="Smoking Calculator"
+       x:Class="SmokingCalculator.AppShell">
+
+
+    <!--
+        The overall app visual hierarchy is defined here, along with navigation.
+    
+        https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/
+    -->
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="#3399ec" /> <!--Titlebar color--> 
+
+                <!--<Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Dark= {StaticResource ForegroundColorDark},
+                                                                                Light= {StaticResource ForegroundColor}}" />-->
+
+                <!--navbar text color-->
+                
+                <!--<Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Dark= {StaticResource NavbarColorDark},
+                                                                                Light= {StaticResource NavbarColor}}" />-->
+                   <Setter Property="Shell.TabBarTitleColor" Value="White" />
+
+
+                <Setter Property="Shell.UnselectedColor" Value="Black"/>
+
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#3399ec" />
+
+                <Setter Property="Shell.TabBarForegroundColor" Value="#3399ec" />
+
+            </Style>
+
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <TabBar>
+        <Tab Title="Main" 
+             Route="MainPage">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FASolid"
+                                     Glyph="{x:Static helpers:FAIcons.Clock}"/>
+            </Tab.Icon>
+            <ShellContent
+                      ContentTemplate="{DataTemplate local:MainPage}"/>
+        </Tab>
+        <Tab Title="Statistics" 
+             Route="StatisticsPage">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FASolid"
+                                     Glyph="{x:Static helpers:FAIcons.Info}"/>
+            </Tab.Icon>
+            <ShellContent
+                      ContentTemplate="{DataTemplate local:StatisticsPage}"/>
+        </Tab>
+        <Tab Title="Achievements" 
+             Route="AchievementsPage">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FASolid"
+                                     Glyph="{x:Static helpers:FAIcons.Trophy}"/>
+            </Tab.Icon>
+            <ShellContent
+                      ContentTemplate="{DataTemplate local:AchievementsPage}"/>
+        </Tab>
+    </TabBar>
+
+
+</Shell>

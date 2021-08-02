@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmokingCalculator.Views.AchievementsPage"
+             xmlns:viewmodels="clr-namespace:SmokingCalculator.ViewModels"
+             xmlns:model="clr-namespace:SmokingCalculator.Models"
+             xmlns:helpers ="clr-namespace:SmokingCalculator.Helpers" 
+             xmlns:admob="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
+             x:DataType="model:Achievement"
+             Title="Smoking Calculator"
+              BackgroundColor="{AppThemeBinding
+                Dark={StaticResource WindowBackgroundColorDark},
+                Light={StaticResource WindowBackgroundColor}}">
+    
+    <ContentPage.BindingContext>
+        <viewmodels:AchievementsViewModule></viewmodels:AchievementsViewModule>
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Settings" Command="{Binding OpenSettingsCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FASolid" Size="Large"
+                                 Glyph="{x:Static helpers:FAIcons.Cog}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem Text="Help" Command="{Binding OpenHelpCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FASolid" Size="Large"
+                                 Glyph="{x:Static helpers:FAIcons.Question}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    <StackLayout>
+        <CollectionView x:DataType="viewmodels:AchievementsViewModule"
+                        SelectionMode="Single"
+            ItemsSource= "{Binding Achievements}"
+            SelectionChanged="CollectionView_SelectionChanged">
+            <!--<CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>-->
+            <CollectionView.ItemTemplate>
+                
+                <DataTemplate>
+                    <StackLayout>
+                        <BoxView HeightRequest="1" Color="{AppThemeBinding
+                Dark={StaticResource ForegroundColorDark},
+                Light={StaticResource ForegroundColor}}"></BoxView>
+                        <Grid Padding="10,0"
+                      x:DataType="model:Achievement"
+                     RowDefinitions="Auto, *"
+                      ColumnDefinitions="Auto, *" >
+                        <Image Grid.RowSpan="2"
+                       Source="{Binding ImageUrl}"
+                       Aspect="AspectFill"
+                       HeightRequest="40"
+                       WidthRequest="40" />
+                            <Label Grid.Column="1"  FontSize="{OnIdiom Tablet=Large}" HorizontalOptions="StartAndExpand" TextColor="{AppThemeBinding
+                                                                                                                            Dark={StaticResource ForegroundColorDark},
+                                                                                                                            Light={StaticResource ForegroundColor}}"
+                       Text="{Binding Title}"
+                       FontAttributes="Bold" />
+                            <Label Grid.Row="1" FontSize="{OnIdiom Tablet=Large}" HorizontalOptions="Start" TextColor="{AppThemeBinding
+                                                                                                                Dark={StaticResource ForegroundColorDark},
+                                                                                                                Light={StaticResource ForegroundColor}}"
+                       Grid.Column="1"
+                       Text="{Binding Subtitle} "
+                       VerticalOptions="End" />
+                            <CheckBox Grid.RowSpan="2" Grid.Column="1" IsChecked="{Binding Completed}"  HorizontalOptions="EndAndExpand" IsEnabled="False"></CheckBox>
+                        </Grid>
+                        <BoxView HeightRequest="1" Color="Black"></BoxView>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <admob:MTAdView AdsId="ca-app-pub-6196363473099538/6546191192"/>
+
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmokingCalculator.Views.HistoryPage"
+             xmlns:viewmodels="clr-namespace:SmokingCalculator.ViewModels"
+             xmlns:model="clr-namespace:SmokingCalculator.Models"     
+             Title="History">
+    
+    <ContentPage.BindingContext>
+        <viewmodels:HistoryViewModule></viewmodels:HistoryViewModule>
+    </ContentPage.BindingContext>
+    <ContentPage.Content >
+        <StackLayout>
+            <CollectionView ItemsSource="{Binding History}">
+                <CollectionView.EmptyView>
+                    <StackLayout>
+                        <Label Text="Nothing here. You got some work to do." FontSize="{OnIdiom Tablet=Large}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <BoxView HeightRequest="1" Color="Black"></BoxView>
+                            <Grid RowDefinitions="Auto,*" >
+                                <Label x:DataType="model:HistoryItem" Text="{Binding .}" FontSize="Medium"  HorizontalOptions="CenterAndExpand"/>
+                            </Grid>
+                            <BoxView HeightRequest="1" Color="Black"></BoxView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!--<Button Text="Open" Command="{Binding OpenCommand}"></Button> --><!--for debugging-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

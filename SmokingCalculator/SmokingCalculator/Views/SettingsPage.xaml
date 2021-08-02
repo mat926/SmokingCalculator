@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodule="clr-namespace:SmokingCalculator.ViewModels"
+             x:Class="SmokingCalculator.Views.SettingsPage"
+             Title="Settings"
+              BackgroundColor="{AppThemeBinding
+                Dark={StaticResource WindowBackgroundColorDark},
+                Light={StaticResource WindowBackgroundColor}}">
+
+    <ContentPage.BindingContext>
+        <viewmodule:SettingsViewModule/>
+    </ContentPage.BindingContext>
+    
+    <StackLayout Padding="10,0,10,0" Orientation="Vertical">
+        <TableView Intent="Settings" >
+
+        <TableSection Title="General" >
+            <SwitchCell Text="Show facts" On="{Binding Facts}"></SwitchCell>
+                <SwitchCell Text="Show confirmation" On="{Binding Confirm}"></SwitchCell>
+            </TableSection>
+
+
+        <!--<TableSection Title="Password">
+            <ViewCell >
+                <StackLayout Padding="10,0,10,0" Orientation="Horizontal">
+                    <Button Text="Create" HorizontalOptions="StartAndExpand"></Button>
+                    <Button Text="Change" HorizontalOptions="CenterAndExpand"></Button>
+                    <Button Text="Remove" HorizontalOptions="EndAndExpand"></Button>
+                </StackLayout>
+            </ViewCell>
+        </TableSection>-->
+
+        <TableSection Title="Data">
+            <!--<ViewCell >
+                <StackLayout Padding="10,0,10,0" Orientation="Vertical">
+                    <Label Text="Backup" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+            </ViewCell>
+            <ViewCell >
+                <StackLayout Padding="10,0,10,0" Orientation="Vertical">
+                    <Label Text="Restore" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+            </ViewCell>-->
+            <ViewCell Tapped="Reset_Tapped" >
+                <StackLayout Padding="10,0,10,0" Orientation="Vertical">
+                        <Label Text="Reset Data" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                    </StackLayout>
+            </ViewCell>
+        </TableSection>
+        
+        <TableSection Title="About" >
+                <ViewCell Tapped="Rate_Tapped">
+                    <StackLayout Padding="10,0,10,0" Orientation="Vertical">
+                        <Label Text="Rate App" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell Tapped="Contact_Tapped" >
+                <StackLayout Padding="10,0,10,0" Orientation="Vertical">
+                    <Label Text="Contact" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+            </ViewCell>
+            <!--<ViewCell Tapped="Credits_Tapped" >
+                <StackLayout Padding="10,0,10,0" Orientation="Vertical">
+                    <Label Text="Credits" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+            </ViewCell>-->
+            <ViewCell Tapped="Volunteer_Tapped" >
+                <StackLayout Padding="10,0,10,0" Orientation="Vertical">
+                    <Label Text="Volunteers wanted" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+            </ViewCell>
+            <!--<ViewCell >
+                <StackLayout Padding="10,0,10,0" Orientation="Vertical">
+                    <Label Text="Remove ads" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+            </ViewCell>-->
+         
+        </TableSection>
+
+    </TableView>
+
+   
+        <Label Text="{Binding VersionString}" FontSize="Micro" TextColor="Green" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"></Label>
+    </StackLayout>
+
+
+</ContentPage>

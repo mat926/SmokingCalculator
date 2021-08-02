@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmokingCalculator.Views.StatisticsPage"
+             xmlns:viewmodule="clr-namespace:SmokingCalculator.ViewModels"
+             xmlns:helpers ="clr-namespace:SmokingCalculator.Helpers" 
+             xmlns:admob="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
+             Title="Smoking Calculator" BackgroundColor="{AppThemeBinding
+                Dark={StaticResource WindowBackgroundColorDark},
+                Light={StaticResource WindowBackgroundColor}}">
+    
+    <ContentPage.BindingContext>
+        <viewmodule:StatisticsViewModule></viewmodule:StatisticsViewModule>
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Settings" Command="{Binding OpenSettingsCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FASolid" Size="Large"
+                                 Glyph="{x:Static helpers:FAIcons.Cog}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem Text="Help" Command="{Binding OpenHelpCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FASolid" Size="Large"
+                                 Glyph="{x:Static helpers:FAIcons.Question}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Margin="25">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label  FontSize="{OnIdiom Tablet=Large}" Text="Total times smoked:" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="{AppThemeBinding
+                Dark={StaticResource ForegroundColorDark},
+                Light={StaticResource ForegroundColor}}"></Label>
+                <Label  FontSize="{OnIdiom Tablet=Large}" Text="{Binding Total}" Grid.Column="1" Grid.Row="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="{AppThemeBinding
+                Dark={StaticResource ForegroundColorDark},
+                Light={StaticResource ForegroundColor}}"></Label>
+                <Label  FontSize="{OnIdiom Tablet=Large}" Text="Longest time withheld:" Grid.Column="0" Grid.Row="1"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="{AppThemeBinding
+                Dark={StaticResource ForegroundColorDark},
+                Light={StaticResource ForegroundColor}}"></Label>
+                
+                <StackLayout  Grid.Column="1" Grid.Row="1" HorizontalOptions="CenterAndExpand" Spacing="0">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding Longest.Days, StringFormat='{0} Days'}" FontSize="{OnIdiom Tablet=Large}" TextColor="{AppThemeBinding
+                Dark={StaticResource ForegroundColorDark},
+                Light={StaticResource ForegroundColor}}"></Label>
+                        
+                        <Label Text="{Binding Longest.Hours, StringFormat='{0} Hours'}" FontSize="{OnIdiom Tablet=Large}" TextColor="{AppThemeBinding
+                Dark={StaticResource ForegroundColorDark},
+                Light={StaticResource ForegroundColor}}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding Longest.Minutes, StringFormat='{0} Minutes'}" FontSize="{OnIdiom Tablet=Large}" TextColor="{AppThemeBinding
+                Dark={StaticResource ForegroundColorDark},
+                Light={StaticResource ForegroundColor}}" ></Label>
+                        
+                        <Label Text="{Binding Longest.Seconds, StringFormat='{0} Seconds'}" FontSize="{OnIdiom Tablet=Large}" TextColor="{AppThemeBinding
+                Dark={StaticResource ForegroundColorDark},
+                Light={StaticResource ForegroundColor}}"></Label>
+                    </StackLayout>
+                    <!--<Label Text="14 Days 17 Hours                                12 Minutes 8 Seconds"></Label>-->
+                </StackLayout>
+                <Label FontSize="{OnIdiom Tablet=Large}" Text="Last time smoked:" Grid.Column="0" Grid.Row="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="{AppThemeBinding
+                Dark={StaticResource ForegroundColorDark},
+                Light={StaticResource ForegroundColor}}"></Label>
+                
+                <Label  FontSize="{OnIdiom Tablet=Large}" Text="{Binding LastTime}" Grid.Column="1" Grid.Row="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="{AppThemeBinding
+                Dark={StaticResource ForegroundColorDark},
+                Light={StaticResource ForegroundColor}}"></Label>
+
+                
+                <Label FontSize="{OnIdiom Tablet=Large}" Text="Total time wasted (1 cigarette takes an average of 11 minutes of your life):" Grid.Column="0" Grid.Row="3" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="{AppThemeBinding
+                Dark={StaticResource ForegroundColorDark},
+                Light={StaticResource ForegroundColor}}"></Label>
+
+                <StackLayout  Grid.Column="1" Grid.Row="3" HorizontalOptions="CenterAndExpand" Spacing="0">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding TimeWasted.Days, StringFormat='{0} Days'}" FontSize="{OnIdiom Tablet=Large}" TextColor="{AppThemeBinding
+                Dark={StaticResource ForegroundColorDark},
+                Light={StaticResource ForegroundColor}}"></Label>
+
+                        <Label Text="{Binding TimeWasted.Hours, StringFormat='{0} Hours'}" FontSize="{OnIdiom Tablet=Large}" TextColor="{AppThemeBinding
+                Dark={StaticResource ForegroundColorDark},
+                Light={StaticResource ForegroundColor}}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding TimeWasted.Minutes, StringFormat='{0} Minutes'}" FontSize="{OnIdiom Tablet=Large}" TextColor="{AppThemeBinding
+                Dark={StaticResource ForegroundColorDark},
+                Light={StaticResource ForegroundColor}}" ></Label>
+                    </StackLayout>
+                    <!--<Label Text="14 Days 17 Hours                                12 Minutes 8 Seconds"></Label>-->
+                </StackLayout>
+            </Grid>
+            <Button Text="History"  Command="{Binding OpenHistoryCommand}" HorizontalOptions="CenterAndExpand"></Button>
+
+
+            <admob:MTAdView AdsId="ca-app-pub-6196363473099538/6546191192" VerticalOptions="EndAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
